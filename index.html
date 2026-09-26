@@ -151,6 +151,11 @@
       }
       input:focus, textarea:focus { outline: 2px solid rgba(99,102,241,.6); border-color: transparent; }
       .field { display: grid; gap: .35rem; }
+      .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+      .form-msg { margin: .5rem 0 0; font-size: .93rem; }
+      .form-msg.goed { color: var(--accent-2); }
+      .form-msg.fout { color: #fca5a5; }
+      .klein { margin: .2rem 0 0; font-size: .82rem; color: var(--muted); }
 
       footer { padding: 2.5rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .88rem; }
       .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
@@ -158,6 +163,7 @@
     <link rel="stylesheet" href="assets/sayf-board.css" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b18'/%3E%3Ccircle cx='16' cy='11' r='4' fill='%23c1170f'/%3E%3Cpath d='M9 27c0-4 3-7 7-7s7 3 7 7' stroke='%236366f1' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
     <script src="assets/sayf-board.js" defer></script>
+    <script src="assets/contact.js" defer></script>
   </head>
   <body>
     <header>
@@ -195,6 +201,7 @@
             <div class="stat"><b>EU AI Act</b><span>Readiness & classificatie</span></div>
             <div class="stat"><b>AVG / GDPR</b><span>Privacy-by-design</span></div>
             <div class="stat"><b>ISO/IEC 42001</b><span>AI-managementsysteem</span></div>
+            <div class="stat"><b>Stichting Duurzaam AI</b><span>Bestuurslid sinds 2026</span></div>
           </div>
         </div>
       </div>
@@ -306,25 +313,59 @@
           <div class="grid grid-2">
             <div>
               <div class="eyebrow">Over</div>
-              <h2>Praktisch, mensgericht en resultaatgericht</h2>
+              <h2>Senior Data IT Specialist met een governance-hoek</h2>
               <p class="sub" style="margin-bottom:1.2rem">
-                Ik ben Ashraf Arab. Ik combineer kennis van AI-technologie met governance en compliance,
-                en vertaal complexe regelgeving naar begrijpelijke stappen voor de Nederlandse praktijk.
+                Ik ben Ashraf Arab. Sinds 2012 werk ik aan data: business intelligence, dataplatforms
+                en veilige systemen bij organisaties in de financiële sector, de publieke sector en
+                het bedrijfsleven. Daar komt AI-governance bij: van de EU AI Act en AI-beleid tot
+                risicobeheer, audits en bewustwording in teams.
+              </p>
+              <p class="sub" style="margin-bottom:1.2rem">
+                Ik ben bestuurslid van <strong>Stichting Duurzaam AI</strong>, de niet-commerciële
+                stichting die AI verantwoord én toegankelijk wil maken met open source-projecten,
+                kennissessies en praktische trainingen. Daar komt mijn overtuiging vandaan: AI hoort
+                begrijpelijk te zijn, met de regie in eigen hand.
               </p>
               <p class="sub" style="margin-bottom:0">
                 Geen dikke rapporten die in de la verdwijnen, maar werkende governance die teams echt
                 helpt om AI verantwoord in te zetten.
               </p>
+              <div class="eyebrow" style="margin-top:2rem">Track record</div>
+              <div class="tags">
+                <span class="tag">Information Tower — eigen bedrijf (Ridderkerk)</span>
+                <span class="tag">APG</span>
+                <span class="tag">Planon</span>
+                <span class="tag">Euro Pool System</span>
+                <span class="tag">Brocacef</span>
+                <span class="tag">ALFAM</span>
+                <span class="tag">DIKW Consulting</span>
+                <span class="tag">Staris-groep</span>
+              </div>
             </div>
-            <div class="card">
-              <h3>Waarom met mij samenwerken?</h3>
-              <p style="margin-top:.5rem">
-                ✔ Focus op de Nederlandse markt en regelgeving<br />
-                ✔ Van strategie tot implementatie<br />
-                ✔ Zowel technisch als bestuurlijk<br />
-                ✔ Helder taalgebruik en vaste tarieven<br />
-                ✔ Onafhankelijk en vertrouwelijk
-              </p>
+            <div style="display:grid;gap:1.25rem;align-content:start">
+              <div class="card">
+                <h3>Waarom met mij samenwerken?</h3>
+                <p style="margin-top:.5rem">
+                  ✔ Focus op de Nederlandse markt en regelgeving<br />
+                  ✔ Van strategie tot implementatie<br />
+                  ✔ Zowel technisch als bestuurlijk<br />
+                  ✔ Helder taalgebruik en vaste tarieven<br />
+                  ✔ Onafhankelijk en vertrouwelijk
+                </p>
+              </div>
+              <div class="card" id="stichting">
+                <h3>Bestuur Stichting Duurzaam AI</h3>
+                <p style="margin-top:.5rem">
+                  Ik zit in het bestuur naast voorzitter Sayf Jawad, secretaris Manhal Al-Rubaiy en
+                  penningmeester Menno van Wieringen. De stichting is opgericht op 6 januari 2026,
+                  werkt zonder winstoogmerk en publiceert open source — van de Slimme Gemeente
+                  Assistent tot de praktische AI-trainingen.
+                </p>
+                <p style="margin:.7rem 0 0">
+                  <a href="https://www.stichtingduurzaamai.nl" target="_blank" rel="noopener noreferrer">stichtingduurzaamai.nl →</a>
+                </p>
+                <p class="klein" style="margin-top:.4rem">KvK 99418428 · statutaire zetel IJsselstein · bestuurders onbeloond</p>
+              </div>
             </div>
           </div>
         </div>
@@ -609,7 +650,7 @@
             <p class="sub" style="margin-bottom:0">
               Plan een vrijblijvende intake en ontdek waar uw organisatie staat op het gebied van AI-governance.
             </p>
-            <form onsubmit="event.preventDefault(); this.querySelector('.form-msg').hidden = false;">
+            <form id="contact-form" novalidate>
               <div class="field">
                 <label for="naam">Naam</label>
                 <input id="naam" name="naam" type="text" placeholder="Uw naam" required />
@@ -620,11 +661,17 @@
               </div>
               <div class="field">
                 <label for="bericht">Waar kunnen we mee helpen?</label>
-                <textarea id="bericht" name="bericht" rows="4" placeholder="Beschrijf kort uw vraagstuk"></textarea>
+                <textarea id="bericht" name="bericht" rows="4" placeholder="Beschrijf kort uw vraagstuk" required></textarea>
+              </div>
+              <div class="hp">
+                <label for="website">Laat dit veld leeg</label>
+                <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
               </div>
               <button class="btn btn-primary" type="submit">Verstuur aanvraag</button>
-              <p class="form-msg" hidden style="color:var(--accent-2);margin:.4rem 0 0">
-                Bedankt! Uw aanvraag is ontvangen. Ik neem binnen één werkdag contact met u op.
+              <p class="form-msg" id="form-msg" hidden></p>
+              <p class="klein">
+                Je gegevens worden alleen gebruikt om je vraag te beantwoorden. Liever direct
+                mailen? <a href="mailto:info@ashraf.sdai.nl">info@ashraf.sdai.nl</a>
               </p>
             </form>
           </div>
@@ -634,8 +681,11 @@
 
     <footer>
       <div class="wrap foot">
-        <span>© 2026 Ashraf Arab · AI Governance</span>
-        <span>Nederland · <a href="mailto:info@ashraf.sdai.nl">info@ashraf.sdai.nl</a></span>
+        <span>© 2026 Ashraf Arab · AI Governance · bijgewerkt 26 september 2026</span>
+        <span>
+          Bestuurslid <a href="https://www.stichtingduurzaamai.nl" target="_blank" rel="noopener noreferrer">Stichting Duurzaam AI</a>
+          · <a href="mailto:info@ashraf.sdai.nl">info@ashraf.sdai.nl</a>
+        </span>
       </div>
     </footer>
   </body>
