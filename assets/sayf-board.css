@@ -1,0 +1,243 @@
+/* ===================================================================
+   Sayf-dossier — prikbord / "crime wall"
+   Alleen opmaak; de rode draden worden door assets/sayf-board.js
+   getekend op basis van de pinnen in elke kaart.
+   =================================================================== */
+
+#dossier { position: relative; }
+
+.board-controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .55rem;
+}
+.board-btn {
+  font: 600 .78rem/1 ui-monospace, "Courier New", monospace;
+  letter-spacing: .07em; text-transform: uppercase; cursor: pointer;
+  padding: .6rem .85rem; border-radius: 8px;
+  background: rgba(214, 40, 40, .14); color: #ffb9b2;
+  border: 1px solid rgba(214, 40, 40, .45);
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.board-btn:hover { background: rgba(214, 40, 40, .26); }
+.board-btn[aria-pressed="false"] {
+  background: rgba(255, 255, 255, .05); color: var(--muted);
+  border-color: var(--border);
+}
+.board-hint { font: .78rem/1.4 ui-monospace, "Courier New", monospace; color: var(--muted); }
+.board-controls a.board-btn { display: inline-flex; align-items: center; }
+.board-controls a.board-btn:hover { text-decoration: none; }
+
+/* ---------- het bord zelf ---------- */
+.board {
+  --mx: 50%; --my: 0%;
+  position: relative; overflow: hidden;
+  margin-top: 1.4rem; padding: 3.2rem 1.4rem 2.4rem;
+  border-radius: 20px;
+  border: 1px solid rgba(226, 205, 170, .16);
+  background-color: #0a0908;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .05) 1px, transparent 1.7px),
+    radial-gradient(circle at 5px 3px, rgba(0, 0, 0, .55) 1px, transparent 1.5px),
+    linear-gradient(160deg, #18130f 0%, #090807 55%, #171210 100%);
+  background-size: 7px 7px, 11px 11px, 100% 100%;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, .9), 0 26px 60px rgba(0, 0, 0, .55);
+}
+.board::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255, 236, 200, .07), transparent 70%);
+}
+
+/* ---------- rode draden ---------- */
+.strings {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 1; pointer-events: none; overflow: visible;
+  transition: opacity .35s ease;
+}
+.strings.uit { opacity: 0; }
+.strings path {
+  fill: none; stroke: rgba(214, 40, 38, .78); stroke-width: 2.1; stroke-linecap: round;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .9));
+}
+.strings circle { fill: #6d0c09; stroke: rgba(255, 170, 160, .45); stroke-width: 1; }
+
+/* ---------- kaartenraster ---------- */
+.board-grid {
+  position: relative; z-index: 2;
+  display: grid; gap: 2.6rem 1.5rem; align-items: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 990px) { .board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .board-grid { grid-template-columns: 1fr; gap: 2.1rem; } }
+
+/* ---------- bewijsstukken ---------- */
+.ev {
+  position: relative; color: #1b1712; border-radius: 3px;
+  padding: 1.15rem 1.15rem 1.25rem;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .035) 0 1px, transparent 1px 26px),
+    linear-gradient(180deg, #f8f5ec, #eee9dc);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, .62), inset 0 1px 0 rgba(255, 255, 255, .55);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform .22s ease, box-shadow .22s ease, opacity .6s ease var(--d, 0s);
+}
+.ev:hover {
+  transform: rotate(0deg) translateY(-5px) scale(1.015);
+  box-shadow: 0 24px 46px rgba(0, 0, 0, .72); z-index: 6;
+}
+.board--anim .ev,
+.board--anim .board-sources { opacity: 0; }
+.board--anim.in .ev,
+.board--anim.in .board-sources { opacity: 1; }
+
+.ev.wide { grid-column: span 2; }
+@media (max-width: 620px) { .ev.wide { grid-column: span 1; } }
+
+.ev .pin {
+  position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; margin-left: -7px;
+  border-radius: 50%; z-index: 3;
+  background: radial-gradient(circle at 35% 30%, #ffa79c, #c1170f 55%, #4f0301);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .75), 0 0 0 1px rgba(0, 0, 0, .45);
+}
+.ev .tape {
+  position: absolute; top: -11px; left: 15%; width: 78px; height: 22px;
+  transform: rotate(-5deg);
+  background: linear-gradient(180deg, rgba(255, 233, 160, .5), rgba(255, 224, 138, .3));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+  border-left: 1px solid rgba(255, 255, 255, .35);
+}
+
+.ev .label {
+  margin: 0 0 .6rem; padding-bottom: .4rem;
+  font: 700 .7rem/1.2 ui-monospace, "Courier New", monospace;
+  letter-spacing: .15em; text-transform: uppercase; color: #8d1f16;
+  border-bottom: 1px dashed rgba(0, 0, 0, .28);
+}
+.ev h3 { margin: 0 0 .5rem; font-size: 1.1rem; color: #13100c; }
+.ev p, .ev .mono { margin: 0; font: .85rem/1.6 ui-monospace, "Courier New", monospace; color: #2c241c; }
+.ev ul { margin: .1rem 0 0; padding-left: 1.05rem; font: .85rem/1.6 ui-monospace, "Courier New", monospace; color: #2c241c; }
+.ev li { margin-bottom: .2rem; }
+.ev .meta { margin-top: .75rem; font: .73rem/1.5 ui-monospace, "Courier New", monospace; color: #6d6154; }
+.ev .chip {
+  display: inline-block; margin: .25rem .3rem 0 0; padding: .28rem .5rem;
+  font: .71rem/1 ui-monospace, "Courier New", monospace;
+  border: 1px solid rgba(0, 0, 0, .25); border-radius: 999px;
+  color: #3a3128; background: rgba(255, 255, 255, .5);
+}
+.ev .hl { background: linear-gradient(180deg, transparent 58%, rgba(255, 214, 64, .7) 58%); }
+.ev b { color: #13100c; }
+
+/* polaroid */
+.ev.polaroid { padding: .75rem .75rem 1rem; background: linear-gradient(180deg, #fdfcf7, #f3efe4); }
+.ev.polaroid img {
+  display: block; width: 100%; aspect-ratio: 1 / 1.03; object-fit: cover;
+  border-radius: 2px; background: #d9d3c4;
+  filter: contrast(1.06) saturate(.92) sepia(.04);
+}
+.ev.polaroid figcaption { margin-top: .6rem; font: .8rem/1.45 ui-monospace, "Courier New", monospace; color: #2c241c; }
+.ev.polaroid .who { display: block; font: 800 1.08rem/1.2 system-ui, -apple-system, sans-serif; color: #131010; }
+
+.ev.stamp-ruimte { padding-bottom: 2.8rem; }
+
+/* kaart met eigen stempel */
+.stamp {
+  position: absolute; right: .85rem; bottom: .75rem;
+  transform: rotate(-7deg);
+  font: 800 .78rem/1 ui-monospace, "Courier New", monospace;
+  letter-spacing: .1em; color: rgba(178, 26, 20, .7);
+  border: 3px solid rgba(178, 26, 20, .5); border-radius: 6px;
+  padding: .28rem .45rem;
+}
+
+/* netwerkkaart met kleine foto's */
+.mini { display: flex; align-items: center; gap: .6rem; margin-top: .55rem; }
+.mini img {
+  width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+  border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, .45);
+}
+.mini .nm { font: 700 .85rem/1.2 ui-monospace, "Courier New", monospace; color: #221b15; }
+.mini .rl { font: .74rem/1.25 ui-monospace, "Courier New", monospace; color: #6d6154; }
+
+/* ---------- grappen & garnituur ---------- */
+.board { padding-top: 4.4rem; }                      /* ruimte voor het politielint */
+
+.lint {
+  position: absolute; left: -3%; right: -3%; top: 13px; z-index: 3;
+  overflow: hidden; padding: .34rem 0; transform: rotate(-1.4deg);
+  background: repeating-linear-gradient(45deg, #f2d024 0 16px, #17130f 16px 32px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .6);
+}
+.lint-track { display: flex; width: max-content; animation: lint-loop 32s linear infinite; }
+.lint-track span {
+  display: block; white-space: nowrap; padding-right: 1.5rem;
+  font: 800 .7rem/1 ui-monospace, "Courier New", monospace;
+  letter-spacing: .22em; color: #13100c;
+  text-shadow: 0 0 5px #f2d024, 0 0 5px #f2d024, 0 0 5px #f2d024;
+}
+@keyframes lint-loop { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .lint-track { animation: none; } }
+
+/* loep die de cursor volgt */
+.loep {
+  position: absolute; top: 0; left: 0; z-index: 4;
+  width: 96px; height: 96px; margin: -48px 0 0 -48px;
+  border-radius: 50%; pointer-events: none;
+  border: 8px solid rgba(242, 236, 224, .72);
+  background: radial-gradient(circle at 38% 32%, rgba(255, 255, 255, .13), rgba(255, 255, 255, .02) 62%, transparent 72%);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .4), inset 0 0 24px rgba(255, 255, 255, .12), 0 12px 24px rgba(0, 0, 0, .55);
+  backdrop-filter: brightness(1.35) saturate(1.15) blur(.4px);
+  opacity: 0; transition: opacity .3s ease;
+}
+.loep::after {
+  content: ""; position: absolute; right: -42px; bottom: -34px;
+  width: 48px; height: 13px; border-radius: 7px; transform: rotate(45deg);
+  background: linear-gradient(180deg, #7a5535, #2b1a0f);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .6);
+}
+/* pas tonen zodra er echt een muis over het bord beweegt */
+.board.loep-aan .loep { opacity: .95; }
+
+/* paperclip, koffievlek, vingerafdruk */
+.paperclip {
+  position: absolute; top: -16px; right: 14px; z-index: 3;
+  width: 15px; height: 46px; border-radius: 9px;
+  border: 2px solid rgba(212, 218, 235, .8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .55);
+}
+.paperclip::after {
+  content: ""; position: absolute; inset: 4px 3px 9px 3px; border-radius: 7px;
+  border: 2px solid rgba(212, 218, 235, .6); border-bottom-color: transparent;
+}
+.koffievlek {
+  position: absolute; z-index: -1; right: -30px; bottom: -34px; width: 132px; height: 132px;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(97, 62, 26, .36) 0 44%, rgba(97, 62, 26, .22) 58%,
+    rgba(97, 62, 26, .08) 66%, transparent 72%);
+}
+.vingerafdruk {
+  position: absolute; right: .9rem; bottom: .8rem; z-index: 0;
+  width: 42px; height: 52px; opacity: .32; pointer-events: none;
+  background: repeating-radial-gradient(ellipse at 50% 92%, transparent 0 3px, #4c4438 3px 4.2px);
+  border-radius: 50% 50% 42% 42%;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 96%, #000 45%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 96%, #000 45%, transparent 78%);
+}
+.ev.print-ruimte { padding-bottom: 3.4rem; }
+
+/* ---------- bronnenlijst ---------- */
+.board-sources {
+  position: relative; z-index: 2; margin-top: 2.4rem;
+  padding: 1.1rem 1.25rem; border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, .16); background: rgba(0, 0, 0, .42);
+  transition: opacity .6s ease var(--d, 0s);
+}
+.board-sources h3 {
+  margin: 0 0 .6rem;
+  font: 700 .72rem/1 ui-monospace, "Courier New", monospace;
+  letter-spacing: .15em; text-transform: uppercase; color: #ffb4ad;
+}
+.board-sources ul {
+  margin: 0; padding-left: 1.1rem; columns: 2; column-gap: 2rem;
+  font: .79rem/1.8 ui-monospace, "Courier New", monospace; color: #b9c0d8;
+}
+@media (max-width: 700px) { .board-sources ul { columns: 1; } }
+.board-sources a { color: #d3d9f0; word-break: break-word; }

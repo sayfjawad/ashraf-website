@@ -3,16 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ashraf Arab · AI Governance voor de Nederlandse markt</title>
-    <meta
-      name="description"
-      content="AI Governance diensten voor de Nederlandse markt: EU AI Act-compliance, AI-beleid, risicobeheer en audit. Praktisch, AVG-proof en direct toepasbaar."
-    />
+    <title>Dossier SDAI-001 · Sayf Jawad (losse pagina)</title>
+    <meta name="description" content="Onderzoeksbord met openbare informatie over Sayf Jawad, voorzitter van Stichting Duurzaam AI. Speels, geen beschuldiging." />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b18'/%3E%3Ccircle cx='16' cy='11' r='4' fill='%23c1170f'/%3E%3Cpath d='M9 27c0-4 3-7 7-7s7 3 7 7' stroke='%236366f1' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
     <style>
       :root {
         color-scheme: dark;
         --bg: #070b18;
-        --bg-soft: #0e1428;
         --card: rgba(255, 255, 255, 0.04);
         --border: rgba(255, 255, 255, 0.1);
         --text: #e8eaf6;
@@ -20,316 +18,51 @@
         --accent: #6366f1;
         --accent-2: #22d3ee;
         --accent-3: #a5b4fc;
-        --max: 1080px;
+        --max: 1120px;
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
-        margin: 0;
+        margin: 0; line-height: 1.6;
         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
+        background: var(--bg); color: var(--text);
       }
       a { color: var(--accent-3); text-decoration: none; }
       a:hover { text-decoration: underline; }
       .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
-
-      /* Header */
       header {
         position: sticky; top: 0; z-index: 50;
         backdrop-filter: blur(12px);
-        background: rgba(7, 11, 24, 0.75);
+        background: rgba(7, 11, 24, 0.78);
         border-bottom: 1px solid var(--border);
       }
-      .nav {
-        display: flex; align-items: center; justify-content: space-between;
-        gap: 1rem; padding: 0.9rem 0;
-      }
-      .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; letter-spacing: .2px; }
+      .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 0; }
+      .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; }
       .brand .dot {
-        width: 30px; height: 30px; border-radius: 9px;
+        width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+        font-size: .85rem; color: #05070f;
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        display: grid; place-items: center; font-size: .85rem; color: #05070f;
       }
-      .nav-links { display: flex; gap: 1.4rem; font-size: 0.95rem; }
-      .nav-links a { color: var(--muted); }
-      .nav-links a:hover { color: var(--text); text-decoration: none; }
-      @media (max-width: 720px) { .nav-links { display: none; } }
-
-      /* Hero */
-      .hero {
-        position: relative; overflow: hidden;
-        padding: 5.5rem 0 4rem;
-      }
-      .hero::before {
-        content: ""; position: absolute; inset: -30% -10% auto -10%; height: 620px;
-        background: radial-gradient(closest-side, rgba(99,102,241,.35), transparent 70%),
-                    radial-gradient(closest-side at 70% 20%, rgba(34,211,238,.18), transparent 70%);
-        z-index: -1;
-      }
-      .badge {
-        display: inline-block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
-        padding: .35rem .75rem; border-radius: 999px;
-        background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.4);
-        color: var(--accent-3); margin-bottom: 1.25rem;
-      }
-      h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.15; margin: 0 0 1rem; }
-      h1 .grad {
-        background: linear-gradient(120deg, var(--accent-3), var(--accent-2));
-        -webkit-background-clip: text; background-clip: text; color: transparent;
-      }
-      .lead { font-size: 1.12rem; color: var(--muted); max-width: 62ch; }
-      .cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
-      .btn {
-        display: inline-block; padding: 0.75rem 1.35rem; border-radius: 12px;
-        font-weight: 600; font-size: 0.98rem; border: 1px solid transparent;
-      }
-      .btn-primary { background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; }
-      .btn-primary:hover { text-decoration: none; filter: brightness(1.08); }
-      .btn-ghost { border-color: var(--border); color: var(--text); background: var(--card); }
-      .btn-ghost:hover { text-decoration: none; border-color: var(--accent); }
-
-      .stats { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
-      .stat b { display: block; font-size: 1.6rem; color: #fff; }
-      .stat span { font-size: .88rem; color: var(--muted); }
-
-      /* Sections */
-      section { padding: 4.5rem 0; border-top: 1px solid var(--border); }
+      .terug { font-size: .92rem; color: var(--muted); }
+      section { padding: 3.5rem 0 4.5rem; }
       .eyebrow { color: var(--accent-2); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .6rem; }
       h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 .75rem; }
-      .sub { color: var(--muted); max-width: 66ch; margin: 0 0 2.5rem; }
-
-      .grid { display: grid; gap: 1.25rem; }
-      .grid-3 { grid-template-columns: repeat(3, 1fr); }
-      .grid-2 { grid-template-columns: repeat(2, 1fr); }
-      @media (max-width: 860px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
-
-      .card {
-        background: var(--card); border: 1px solid var(--border);
-        border-radius: 16px; padding: 1.5rem;
-        transition: transform .18s ease, border-color .18s ease;
-      }
-      .card:hover { transform: translateY(-3px); border-color: rgba(99,102,241,.55); }
-      .card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
-      .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-      .icon {
-        width: 42px; height: 42px; border-radius: 11px; margin-bottom: .9rem;
-        display: grid; place-items: center; font-size: 1.2rem;
-        background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.35);
-      }
-
-      /* Process */
-      .steps { display: grid; gap: 1rem; }
-      .step { display: flex; gap: 1rem; align-items: flex-start; }
-      .step .num {
-        flex: 0 0 38px; height: 38px; border-radius: 50%;
-        display: grid; place-items: center; font-weight: 700;
-        background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.4); color: var(--accent-2);
-      }
-      .step h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
-      .step p { margin: 0; color: var(--muted); font-size: .95rem; }
-
-      /* Frameworks */
-      .tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
-      .tag {
-        font-size: .85rem; padding: .4rem .8rem; border-radius: 999px;
-        background: var(--bg-soft); border: 1px solid var(--border); color: var(--muted);
-      }
-
-      /* Contact */
-      .contact-card {
-        background: linear-gradient(135deg, rgba(99,102,241,.14), rgba(34,211,238,.07));
-        border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem;
-      }
-      form { display: grid; gap: .9rem; margin-top: 1.5rem; max-width: 560px; }
-      label { font-size: .88rem; color: var(--muted); }
-      input, textarea {
-        width: 100%; padding: .75rem .9rem; border-radius: 10px;
-        background: rgba(0,0,0,.3); border: 1px solid var(--border); color: var(--text);
-        font: inherit;
-      }
-      input:focus, textarea:focus { outline: 2px solid rgba(99,102,241,.6); border-color: transparent; }
-      .field { display: grid; gap: .35rem; }
-
+      .sub { color: var(--muted); max-width: 66ch; margin: 0 0 2rem; }
       footer { padding: 2.5rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .88rem; }
       .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
     </style>
     <link rel="stylesheet" href="assets/sayf-board.css" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b18'/%3E%3Ccircle cx='16' cy='11' r='4' fill='%23c1170f'/%3E%3Cpath d='M9 27c0-4 3-7 7-7s7 3 7 7' stroke='%236366f1' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
     <script src="assets/sayf-board.js" defer></script>
   </head>
   <body>
     <header>
       <div class="wrap nav">
-        <div class="brand">
-          <span class="dot">AA</span>
-          <span>Ashraf Arab · AI Governance</span>
-        </div>
-        <nav class="nav-links">
-          <a href="#diensten">Diensten</a>
-          <a href="#aanpak">Aanpak</a>
-          <a href="#kaders">Kaders</a>
-          <a href="#dossier">Dossier</a>
-          <a href="#over">Over</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div class="brand"><span class="dot">AA</span><span>Ashraf Arab &middot; Dossier</span></div>
+        <a class="terug" href="./">&larr; Terug naar de site</a>
       </div>
     </header>
 
     <main>
-      <div class="hero">
-        <div class="wrap">
-          <span class="badge">AI Governance · Nederlandse markt</span>
-          <h1>Verantwoorde AI,<br /><span class="grad">zonder de vaart eruit te halen.</span></h1>
-          <p class="lead">
-            Ik help organisaties in Nederland om AI veilig, transparant en compliant in te zetten.
-            Van EU AI Act-readiness en AI-beleid tot risicobeheer, audits en de menselijke
-            verantwoordelijkheid op de werkvloer — praktisch en direct toepasbaar.
-          </p>
-          <div class="cta">
-            <a class="btn btn-primary" href="#contact">Plan een gratis intake</a>
-            <a class="btn btn-ghost" href="#diensten">Bekijk diensten</a>
-          </div>
-          <div class="stats">
-            <div class="stat"><b>EU AI Act</b><span>Readiness & classificatie</span></div>
-            <div class="stat"><b>AVG / GDPR</b><span>Privacy-by-design</span></div>
-            <div class="stat"><b>ISO/IEC 42001</b><span>AI-managementsysteem</span></div>
-          </div>
-        </div>
-      </div>
-
-      <section id="diensten">
-        <div class="wrap">
-          <div class="eyebrow">Diensten</div>
-          <h2>AI Governance diensten</h2>
-          <p class="sub">
-            Een compleet pakket om AI verantwoord te implementeren en aantoonbaar te beheersen,
-            afgestemd op de Nederlandse wet- en regelgeving en de eisen van de EU AI Act.
-          </p>
-          <div class="grid grid-3">
-            <div class="card">
-              <div class="icon">⚖️</div>
-              <h3>EU AI Act Readiness</h3>
-              <p>Risicoclassificatie van uw AI-systemen, gap-analyse en een concreet plan van aanpak richting compliance.</p>
-            </div>
-            <div class="card">
-              <div class="icon">📜</div>
-              <h3>AI-beleid & Governance</h3>
-              <p>Opstellen van AI-beleid, rollen en verantwoordelijkheden, ethische richtlijnen en een AI-register.</p>
-            </div>
-            <div class="card">
-              <div class="icon">🛡️</div>
-              <h3>Risicobeheer & Impact</h3>
-              <p>AI-risicoanalyses, DPIA's en Fundamental Rights Impact Assessments (FRIA) voor hoog-risico AI.</p>
-            </div>
-            <div class="card">
-              <div class="icon">🔍</div>
-              <h3>AI-audit & Assurance</h3>
-              <p>Onafhankelijke audits, modelvalidatie en monitoring op bias, transparantie en betrouwbaarheid.</p>
-            </div>
-            <div class="card">
-              <div class="icon">🎓</div>
-              <h3>Training & Bewustwording</h3>
-              <p>Workshops en trainingen voor bestuur, management en teams over AI, ethiek en compliance.</p>
-            </div>
-            <div class="card">
-              <div class="icon">🚀</div>
-              <h3>Implementatiebegeleiding</h3>
-              <p>Van strategie naar uitvoering: begeleiding bij het verantwoord in productie nemen van AI-oplossingen.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="aanpak">
-        <div class="wrap">
-          <div class="eyebrow">Aanpak</div>
-          <h2>Van nulmeting naar beheerste AI</h2>
-          <p class="sub">Een bewezen, gefaseerde aanpak die past bij de schaal en volwassenheid van uw organisatie.</p>
-          <div class="steps">
-            <div class="step">
-              <div class="num">1</div>
-              <div>
-                <h3>Inventarisatie</h3>
-                <p>In kaart brengen van alle AI-systemen, use-cases en datastromen binnen de organisatie.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">2</div>
-              <div>
-                <h3>Risicoclassificatie</h3>
-                <p>Indelen volgens de EU AI Act: verboden, hoog-risico, beperkt risico of minimaal risico.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">3</div>
-              <div>
-                <h3>Beleid & maatregelen</h3>
-                <p>Vastleggen van governance, processen en technische maatregelen die aantoonbaar compliant zijn.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">4</div>
-              <div>
-                <h3>Implementatie & monitoring</h3>
-                <p>Uitrollen, trainen en doorlopend monitoren zodat AI-governance onderdeel wordt van de bedrijfsvoering.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="kaders">
-        <div class="wrap">
-          <div class="eyebrow">Kaders & normen</div>
-          <h2>Compliance met de juiste kaders</h2>
-          <p class="sub">
-            Ik werk met de relevante Europese en Nederlandse kaders, zodat uw organisatie klaar is voor
-            toezicht van onder meer de Autoriteit Persoonsgegevens en de aankomende AI-verordening.
-          </p>
-          <div class="tags">
-            <span class="tag">EU AI Act</span>
-            <span class="tag">AVG / GDPR</span>
-            <span class="tag">ISO/IEC 42001</span>
-            <span class="tag">ISO/IEC 23894 (AI-risico)</span>
-            <span class="tag">NIST AI RMF</span>
-            <span class="tag">OECD AI-principes</span>
-            <span class="tag">DPIA / FRIA</span>
-            <span class="tag">Uitvoeringswet AI</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="over">
-        <div class="wrap">
-          <div class="grid grid-2">
-            <div>
-              <div class="eyebrow">Over</div>
-              <h2>Praktisch, mensgericht en resultaatgericht</h2>
-              <p class="sub" style="margin-bottom:1.2rem">
-                Ik ben Ashraf Arab. Ik combineer kennis van AI-technologie met governance en compliance,
-                en vertaal complexe regelgeving naar begrijpelijke stappen voor de Nederlandse praktijk.
-              </p>
-              <p class="sub" style="margin-bottom:0">
-                Geen dikke rapporten die in de la verdwijnen, maar werkende governance die teams echt
-                helpt om AI verantwoord in te zetten.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Waarom met mij samenwerken?</h3>
-              <p style="margin-top:.5rem">
-                ✔ Focus op de Nederlandse markt en regelgeving<br />
-                ✔ Van strategie tot implementatie<br />
-                ✔ Zowel technisch als bestuurlijk<br />
-                ✔ Helder taalgebruik en vaste tarieven<br />
-                ✔ Onafhankelijk en vertrouwelijk
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="dossier">
         <div class="wrap">
           <div class="eyebrow">Onderzoeksbord</div>
@@ -344,7 +77,6 @@
             <button class="board-btn" id="knop-draden" type="button" aria-pressed="true">Draden aan/uit</button>
             <button class="board-btn" id="knop-schud" type="button">Schud het bord</button>
             <span class="board-hint">18 draden · 16 aanwijzingen · beweeg je muis: er komt een loep bij</span>
-            <a class="board-btn" href="dossier.html">Losse dossierpagina &rarr;</a>
           </div>
 
           <div class="board" id="board">
@@ -600,42 +332,12 @@
           </div>
         </div>
       </section>
-
-      <section id="contact">
-        <div class="wrap">
-          <div class="contact-card">
-            <div class="eyebrow">Contact</div>
-            <h2>Klaar om AI verantwoord in te zetten?</h2>
-            <p class="sub" style="margin-bottom:0">
-              Plan een vrijblijvende intake en ontdek waar uw organisatie staat op het gebied van AI-governance.
-            </p>
-            <form onsubmit="event.preventDefault(); this.querySelector('.form-msg').hidden = false;">
-              <div class="field">
-                <label for="naam">Naam</label>
-                <input id="naam" name="naam" type="text" placeholder="Uw naam" required />
-              </div>
-              <div class="field">
-                <label for="email">E-mailadres</label>
-                <input id="email" name="email" type="email" placeholder="naam@organisatie.nl" required />
-              </div>
-              <div class="field">
-                <label for="bericht">Waar kunnen we mee helpen?</label>
-                <textarea id="bericht" name="bericht" rows="4" placeholder="Beschrijf kort uw vraagstuk"></textarea>
-              </div>
-              <button class="btn btn-primary" type="submit">Verstuur aanvraag</button>
-              <p class="form-msg" hidden style="color:var(--accent-2);margin:.4rem 0 0">
-                Bedankt! Uw aanvraag is ontvangen. Ik neem binnen één werkdag contact met u op.
-              </p>
-            </form>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer>
       <div class="wrap foot">
-        <span>© 2026 Ashraf Arab · AI Governance</span>
-        <span>Nederland · <a href="mailto:info@ashraf.sdai.nl">info@ashraf.sdai.nl</a></span>
+        <span>&copy; 2026 Ashraf Arab &middot; losse dossierpagina</span>
+        <span>Alleen openbare bronnen &middot; geen beschuldiging</span>
       </div>
     </footer>
   </body>
